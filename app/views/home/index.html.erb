@@ -1,2 +1,17 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="home-title">
+  <h1>Search your available Velib</h1>
+</div>
+
+<div class="search-bar">
+  <div class="search-bar-text">
+    <p>Select your station</p>
+  </div>
+  <div id="search-bar-select">
+    <select class="form-control form-control-lg">
+      <option>Station select</option>
+      <% @stations.each do |s| %>
+        <option><%= s.name %></option>
+      <% end %>
+    </select>
+  </div>
+</div>
