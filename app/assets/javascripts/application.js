@@ -16,18 +16,3 @@
 //= require_tree .
 //"use strict";
 //
-//document.addEventListener("DOMContentLoaded", function () {
-//  var button = document.getElementById("button");
-//  button.onclick = resultatSelect;
-//
-//  function resultatSelect() {
-//
-//    select = document.getElementById("select");
-//    resultat = document.getElementById("resultat");
-//    var choice = select.selectedIndex;
-//    var station = select.options[choice].value;
-//
-//    resultat.innerHTML += "<br><br>Vous avez choisie la station : " + station;
-//    //substring(0, valeurVoiture.length - 1)
-//  }
-//});

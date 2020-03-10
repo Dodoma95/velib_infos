@@ -25,6 +25,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'bootstrap', '~> 4.4.1'
 # Gem Rake
 gem "rake"
+# Gem HTTParty
+gem 'httparty'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

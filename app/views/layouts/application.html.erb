@@ -15,5 +15,49 @@
 
   <body>
     <%= yield %>
+
+    <script>
+      function initMap(){
+        var mymap = L.map('map').setView([45.7578, 4.8320], 13);
+        var stations = $('#stations').data('stations');
+        var station = $('#station').data('station');
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          maxZoom: 18,
+          id: 'mapbox/streets-v11',
+          tileSize: 512,
+          zoomOffset: -1,
+          accessToken: 'pk.eyJ1IjoiZG9kb21hOTUiLCJhIjoiY2s3ZzlpaTUzMGE5NjNsbTh4cGl6NDBuMCJ9.50vR882i1NRhakdSlArliw'
+        }).addTo(mymap);
+
+        var myIcon = L.icon({
+        iconUrl: '/assets/vecteur_velo-4b8976a50c1978cba45191c9e88b01159612fcd3f5ffea8ba86b320df46a537a.png',
+        iconSize: [50, 50],
+        iconAnchor: [50, 50],
+        popupAnchor: [-25, -48]
+        });
+
+        if (station != null) {
+          var marker = L.marker([station.latitude, station.longitude], {icon: myIcon}).addTo(mymap);
+          marker.bindPopup(station.name + " située " + station.address);
+        } else {
+          for (station in stations) {
+		        var marker = L.marker([stations[station].latitude, stations[station].longitude], {icon: myIcon}).addTo(mymap);
+            marker.bindPopup(stations[station].name + " située " + stations[station].address);
+	        }
+        }
+      }
+      window.onload = function(){
+	    	// Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
+	    	initMap();
+      };
+    </script>
+
+    <script>
+      function return_all_stations(){
+        location.replace(location.href.split('?')[0]);
+      }
+    </script>
   </body>
 </html>
