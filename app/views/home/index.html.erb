@@ -1,5 +1,11 @@
 <div class="home-title">
-  <h1>Search your available Velib</h1>
+  <h1>Search your Station</h1>
+</div>
+
+<div class="col-lg-12 mt-5">
+  <% if flash[:success] %>
+    <div class="alert alert-success" id="flash-box"><%= flash[:success] %></div>
+  <% end %>
 </div>
 
 <div class="search-bar">
@@ -7,11 +13,18 @@
     <p>Select your station</p>
   </div>
   <div id="search-bar-select">
-    <select class="form-control form-control-lg">
-      <option>Station select</option>
-      <% @stations.each do |s| %>
-        <option><%= s.name %></option>
-      <% end %>
-    </select>
+    <%= form_tag({ controller: 'home', action: 'index' }, method: 'get') do %>
+      <%= select_tag "station", options_from_collection_for_select(@stations, 'id', 'name'), class: "form-control form-control-lg", id: "select" %>
+      <%= submit_tag "Validate", id: "button-validate", class: 'btn btn-danger btn-lg btn-block', onClick: "initMap()" %>
+    <% end %>
+    <%= submit_tag "ALL", id: "button-all", class: 'btn btn-danger btn-lg btn-block', onClick: "return_all_stations(); initMap();" %>
   </div>
 </div>
+
+<div id='map'></div>
+
+<%= content_tag "div", id: "stations", data: {stations: @stations} do %>
+<% end %>
+
+<%= content_tag "div", id: "station", data: {station: @station} do %>
+<% end %>

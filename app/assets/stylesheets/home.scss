@@ -6,6 +6,20 @@
   text-align: center;
 }
 
+#button-validate {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#button-all {
+  margin-bottom: 15px;
+}
+
+#flash-box {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
 .search-bar {
   display: inline-block;
   width: 100%;
@@ -23,4 +37,17 @@
   float: left;
   width: 80%;
   padding-top: 20px;
+}
+
+.card {
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+}
+
+#map {
+  height: 600px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
